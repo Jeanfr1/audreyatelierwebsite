@@ -293,10 +293,13 @@ address { font-style: normal; }
 }
 
 /* ---- scroll modes (set by hero.js) ---- */
-.hero-scroll .hero { height: var(--hero-track, 240svh); }
+.hero-scroll .hero { height: var(--hero-track, 190svh); }
 .hero-scroll .hero__stage { position: sticky; top: 0; }
 .hero-scroll .hero__macro { display: block; }
 .hero-scroll .hero__macro .hero__img { transform-origin: 58% 45%; will-change: transform; }
+/* first frame of the opening before hero.js runs (= intro.macro.scale[0] in timeline.js) */
+.hero-full .hero__macro .hero__img { transform: scale(1.16); }
+.hero-compact .hero__macro .hero__img { transform: scale(1.1); }
 .hero-scroll .hero__portrait { opacity: 0; will-change: opacity, filter; }
 .hero-scroll .hero__scrim { opacity: 0; }
 .hero-scroll .hero__meche { display: block; opacity: 0; will-change: transform, opacity; }

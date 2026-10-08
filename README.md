@@ -26,7 +26,7 @@
 
 ## 🚀 Overview
 
-**Atelier Audrey** is a hair salon at 31 Rue de la Cadivais in Pontchâteau. The site follows one idea from the approved creative direction: ***Le mouvement vous révèle***, movement reveals you. As you scroll, the camera starts inside the strands, a portrait emerges from them, a loose strand of hair crosses the frame, and the composition opens onto the salon's specialities.
+**Atelier Audrey** is a hair salon at 31 Rue de la Cadivais in Pontchâteau. The site follows one idea from the approved creative direction: ***Le mouvement vous révèle***, movement reveals you. The page opens inside the strands and pulls back on its own until a portrait emerges from them. Then, as you scroll, a loose strand of hair crosses the frame and the composition opens onto the salon's specialities.
 
 The curve of the hair then becomes the thread of the page: it returns in **Signature**, drifts through **Nuances**, and ends as a gold line that leads straight into the booking button.
 
@@ -42,28 +42,31 @@ The curve of the hair then becomes the thread of the page: it returns in **Signa
 ## 🎬 The hero animation
 
 <div align="center">
-  <a href="https://atelier-audrey-pontchateau.vercel.app"><img src=".github/assets/hero-scroll.gif" alt="Scrolling through the hero: macro of the hair, the portrait revealed from the face, a strand crossing behind the title, then the portrait narrowing as the Coupe, Couleur and Texture panels open" width="100%" /></a>
-  <sub>Scroll-scrubbed on the live site · captured at 1440 × 900</sub>
+  <a href="https://atelier-audrey-pontchateau.vercel.app"><img src=".github/assets/hero-scroll.gif" alt="The hero opening and scroll: macro of the hair pulling back, the portrait revealed from the face, the title rising, a strand crossing behind the title, then the portrait narrowing as the Coupe, Couleur and Texture panels open" width="100%" /></a>
+  <sub>Opening (plays on load), then scroll-scrubbed · captured at 1440 × 900</sub>
 </div>
 
 <br />
 
-The hero track is 2.4 screen heights tall, so the stage stays pinned for 1.4 screens of scroll. It follows the kit's written motion script (`02-animacao.md`):
+It follows the kit's written motion script (`02-animacao.md`) in two parts. The **opening** plays by itself as the page loads, so the site never opens on a still frame. The rest is **scroll-driven**: the hero track is 1.9 screen heights tall, so the stage stays pinned for 0.9 screens of scroll.
 
-| Scroll  | What happens                                                                                                   |
-| :------ | :------------------------------------------------------------------------------------------------------------- |
-| 0–18%   | A macro of the strands fills the stage and slowly settles (scale 1.12 → 1.04)                                  |
-| 18–42%  | The portrait appears through a soft circular mask that grows **from the face**, blur 8 → 0 px; the title rises |
-| 42–65%  | A transparent strand of hair crosses the foreground, behind the title (2D only: −10% to 12%, −4° to 2°)        |
-| 65–88%  | The text steps back; the portrait narrows to 58% of the width; **Coupe**, **Couleur** and **Texture** open     |
-| 88–100% | A short hold, then the stage releases into **Signature** on the same ivory ground                             |
+| When              | What happens                                                                                                   |
+| :---------------- | :------------------------------------------------------------------------------------------------------------- |
+| Load · 0–1.9 s    | A macro of the strands fills the stage and the camera pulls back (scale 1.16 → 1.04)                           |
+| Load · 0.8–2.4 s  | The portrait appears through a soft circular mask that grows **from the face**, blur 8 → 0 px                   |
+| Load · 1.7–2.9 s  | The title, tagline and booking button rise                                                                     |
+| Scroll · 0–40%    | A transparent strand of hair crosses the foreground, behind the title (2D only: −10% to 12%, −4° to 2°)        |
+| Scroll · 40–75%   | The text steps back; the portrait narrows to 58% of the width; **Coupe**, **Couleur** and **Texture** open     |
+| Scroll · 75–100%  | A short hold, then the stage releases into **Signature** on the same ivory ground                             |
+
+Scrolling during the opening fast-forwards it, and a page that loads mid-hero (restored scroll, a `#section` link) skips it.
 
 **Under the hood**
 
 - 🧩 **Three photo layers, no canvas.** Macro, portrait and the alpha strand are stacked in one sticky stage. Only `transform`, `opacity`, `mask-image`, `clip-path` and a single blur are animated.
 - 📐 **Measured, not guessed.** The face centre (63.4%, 34%) was read from gridded overlays of the source photo. The reveal mask is anchored there, and the narrowing is a `clip-path`, so the face is never scaled or distorted.
-- 🗂️ **Script as data.** Every range in the table lives in `src/data/timeline.js`; `src/js/hero.js` only interpolates it, with a smoothed progress and `?nosmooth` / `?p=0.5` flags for frame-exact captures.
-- 🐢 **Graceful by default.** Below 1024 px the sequence shortens to macro → portrait on a 150 svh track, with no animated blur and the strand limited to 4% of movement, kept below the face. With `prefers-reduced-motion`, on very short screens or without JavaScript, the hero is the still portrait with its title. The desktop-only panel images are never downloaded on phones.
+- 🗂️ **Script as data.** Every range in the table lives in `src/data/timeline.js`; `src/js/hero.js` only interpolates it, with a smoothed progress and `?nosmooth`, `?p=0.5` (scroll) and `?i=0.5` (opening) flags for frame-exact captures. A one-line boot script in `<head>` picks the mode before first paint, so the opening never flashes the still portrait first.
+- 🐢 **Graceful by default.** Below 1024 px the opening is the same macro → portrait without the animated blur, and the scroll track shortens to 140 svh with the strand limited to 4% of movement, kept below the face. With `prefers-reduced-motion`, on very short screens or without JavaScript, the hero is the still portrait with its title. The desktop-only panel images are never downloaded on phones.
 
 <br />
 
@@ -183,7 +186,7 @@ audreyatelierwebsite/
 │   ├── css/main.css              # Tokens, grid, components, hero modes, reveal states
 │   ├── data/
 │   │   ├── site.js               # Business facts (address, phone, Planity) with their sources
-│   │   ├── timeline.js           # Hero scroll script (full + compact)
+│   │   ├── timeline.js           # Hero script: opening + scroll (full + compact)
 │   │   └── asset-meta.json       # Image sizes and files (generated)
 │   └── js/
 │       ├── main.js               # Entry: fonts, styles, module init

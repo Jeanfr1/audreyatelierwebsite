@@ -1,3 +1,5 @@
+import { full } from '../data/timeline.js';
+
 export function initNav() {
   const nav = document.querySelector('[data-nav]');
   const toggle = nav?.querySelector('[data-menu-toggle]');
@@ -26,7 +28,7 @@ export function initNav() {
   function syncTone() {
     const navBottom = nav.firstElementChild.getBoundingClientRect().bottom;
     const pastHero = hero.getBoundingClientRect().bottom <= navBottom;
-    const panels = heroMode === 'full' && heroP > 0.68;
+    const panels = heroMode === 'full' && heroP > full.panels.clip[0] + 0.02;
     nav.classList.toggle('is-light', pastHero || panels || nav.classList.contains('is-open'));
   }
   addEventListener('scroll', syncTone, { passive: true });

@@ -10,7 +10,8 @@ const easeSine = (t) => -(Math.cos(Math.PI * t) - 1) / 2;
 const root = document.documentElement;
 const params = new URLSearchParams(location.search);
 const NO_SMOOTH = params.has('nosmooth');
-const FORCE = params.get('p'); // ?p=0.5 freezes the timeline (captures)
+const FORCE = params.get('p'); // ?p=0.5 freezes the scroll timeline (captures)
+const FORCE_INTRO = params.get('i'); // ?i=0.4 freezes the opening (captures)
 
 export function initHero(onProgress) {
   const hero = document.querySelector('[data-hero]');
@@ -32,6 +33,7 @@ export function initHero(onProgress) {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   let mode = null; let T = null;
   let target = 0; let current = 0; let raf = 0;
+  let intro = 1; let playing = false; let rate = 1; let last = 0; let portraitReady = true;
 
   const set = (el, prop, value) => { if (!el) return; el.style[prop] = value; touched.add(el); };
 
@@ -43,16 +45,31 @@ export function initHero(onProgress) {
   function applyMode() {
     const next = pickMode();
     if (next === mode) return;
+    const first = mode === null;
     mode = next;
+    root.dataset.heroMode = mode; // tells the boot script in index.html that the hero took over
     touched.forEach((el) => el.removeAttribute('style'));
     touched.clear();
     root.classList.remove('hero-scroll', 'hero-full', 'hero-compact');
-    if (mode === 'static') { T = null; stage.dataset.progress = 'static'; onProgress?.(1, mode); return; }
+    if (mode === 'static') { T = null; intro = 1; playing = false; stage.dataset.progress = 'static'; onProgress?.(1, mode); return; }
     T = mode === 'full' ? full : compact;
     root.style.setProperty('--hero-track', T.track);
     root.classList.add('hero-scroll', `hero-${mode}`);
     current = target = measure();
+    if (first) playIntro();
     render(current);
+  }
+
+  // Opening: plays once by itself so the page never lands on a still frame.
+  // Skipped when the page loads inside the track (restored scroll, hash) and for captures.
+  function playIntro() {
+    if (FORCE_INTRO !== null) { intro = clamp01(parseFloat(FORCE_INTRO)); return; }
+    if (FORCE !== null || target > 0.01) return;
+    intro = 0; playing = true; portraitReady = false;
+    const img = L.portrait.querySelector('img');
+    Promise.race([img.decode?.().catch(() => {}), new Promise((r) => setTimeout(r, 1500))])
+      .then(() => { portraitReady = true; });
+    kick();
   }
 
   function measure() {
@@ -65,16 +82,17 @@ export function initHero(onProgress) {
   function render(p) {
     const isFull = mode === 'full';
 
-    // 0–0.18 · macro: very close to the strands, scale 1.12 → 1.04
-    const m = easeOut(clamp01(p / T.macro.until));
-    set(L.macroImg, 'transform', `scale(${lerp(T.macro.scale[0], T.macro.scale[1], m).toFixed(4)})`);
+    // opening (time-driven, see playIntro) · the camera pulls back out of the strands
+    const I = T.intro;
+    const m = easeOut(seg(intro, I.macro.range));
+    set(L.macroImg, 'transform', `scale(${lerp(I.macro.scale[0], I.macro.scale[1], m).toFixed(4)})`);
 
-    const cue = 1 - seg(p, T.cue);
+    const cue = 1 - seg(intro, I.cue);
     set(L.cue, 'opacity', cue.toFixed(3));
     set(L.cue, 'visibility', cue > 0 ? 'visible' : 'hidden');
 
-    // 0.18–0.42 · portrait revealed: crossfade + soft mask growing from the face, blur 8 → 0
-    const r = seg(p, T.reveal);
+    // opening · portrait revealed: crossfade + soft mask growing from the face, blur 8 → 0
+    const r = seg(intro, I.reveal);
     const rv = easeInOut(r);
     const op = easeOut(clamp01(r * 2.2));
     set(L.portrait, 'opacity', op.toFixed(3));
@@ -86,7 +104,7 @@ export function initHero(onProgress) {
       const mask = r >= 1 ? 'none' : 'linear-gradient(transparent, transparent)';
       set(L.portrait, 'maskImage', mask); set(L.portrait, 'webkitMaskImage', mask);
     }
-    const blur = T.blur * (1 - easeOut(r));
+    const blur = I.blur * (1 - easeOut(r));
     set(L.portrait, 'filter', blur > 0.05 ? `blur(${blur.toFixed(2)}px)` : 'none');
     set(L.macro, 'visibility', op >= 1 && r >= 1 ? 'hidden' : 'visible');
 
@@ -97,7 +115,7 @@ export function initHero(onProgress) {
     set(L.scrim, 'opacity', (rv * (1 - out)).toFixed(3));
 
     copy.forEach((els, i) => {
-      const t = easeOut(seg(p, T.copy[i]));
+      const t = easeOut(seg(intro, I.copy[i]));
       const o = t * (1 - out);
       const y = (1 - t) * 26 - out * 18;
       els.forEach((el) => {
@@ -106,11 +124,11 @@ export function initHero(onProgress) {
         set(el, 'visibility', o > 0.01 ? 'visible' : 'hidden');
       });
     });
-    const asideT = easeOut(seg(p, T.copy[2])) * (1 - out);
+    const asideT = easeOut(seg(intro, I.copy[2])) * (1 - out);
     set(L.aside, 'opacity', asideT.toFixed(3));
     set(L.aside, 'visibility', asideT > 0.01 ? 'visible' : 'hidden');
 
-    // 0.42–0.65 · the strand crosses the foreground (2D only, never over the face)
+    // scroll 0–0.4 · the strand crosses the foreground (2D only, never over the face)
     const M = T.meche;
     const mt = seg(p, M.range);
     const fade = Math.min(clamp01(mt / 0.22), clamp01((1 - mt) / 0.3));
@@ -120,7 +138,7 @@ export function initHero(onProgress) {
     set(L.meche, 'transform', `translateX(${lerp(M.x[0], M.x[1], easeSine(mt)).toFixed(2)}%) rotate(${lerp(M.rot[0], M.rot[1], easeSine(mt)).toFixed(2)}deg)`);
 
     if (isFull) {
-      // 0.65–0.88 · portrait narrows to 58% width, masks open colour, cut and texture
+      // scroll 0.4–0.75 · portrait narrows to 58% width, masks open colour, cut and texture
       const c = easeInOut(seg(p, P.clip));
       // ivory ground behind the portrait once it fully covers the stage (switch is invisible)
       set(stage, 'backgroundColor', p >= P.clip[0] ? 'var(--ivory)' : '');
@@ -145,19 +163,28 @@ export function initHero(onProgress) {
     onProgress?.(p, mode);
   }
 
-  function tick() {
+  function tick(now) {
     raf = 0;
+    if (!T) return;
+    if (playing) {
+      const cap = portraitReady ? 1 : T.intro.reveal[0]; // the macro moves at once; the reveal waits for the decoded portrait
+      intro = Math.min(cap, intro + ((now - (last || now)) / T.intro.ms) * rate);
+      last = now;
+      playing = intro < 1;
+    }
     const k = NO_SMOOTH || Math.abs(target - current) > 0.35 ? 1 : 0.16;
     current += (target - current) * k;
     if (Math.abs(target - current) < 0.0004) current = target;
     render(current);
-    if (current !== target) raf = requestAnimationFrame(tick);
+    if (playing || current !== target) raf = requestAnimationFrame(tick);
   }
+  const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
 
   function onScroll() {
     if (!T) return;
     target = measure();
-    if (!raf) raf = requestAnimationFrame(tick);
+    if (intro < 1 && target > 0.005) rate = 5; // scrolling during the opening: finish it quickly
+    kick();
   }
 
   let resizeTimer = 0;

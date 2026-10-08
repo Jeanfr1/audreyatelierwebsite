@@ -22,7 +22,16 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preload" as="image" type="image/avif" imagesrcset="/img/macro-828.avif 828w, /img/macro-1280.avif 1280w, /img/macro-1672.avif 1672w" imagesizes="100vw" />
     <script type="application/ld+json">{{jsonld}}</script>
-    <script>document.documentElement.classList.add('js')</script>
+    <script>
+      (function (r) {
+        r.classList.add('js');
+        // same rule as pickMode() in hero.js: open on the macro before first paint, no flash of the still
+        var m = matchMedia('(prefers-reduced-motion: reduce)').matches || innerHeight < 480 ? '' : innerWidth >= 1024 && innerHeight >= 600 ? 'full' : 'compact';
+        if (!m) return;
+        r.classList.add('hero-scroll', 'hero-' + m);
+        setTimeout(function () { if (!r.dataset.heroMode) r.classList.remove('hero-scroll', 'hero-' + m); }, 4000);
+      })(document.documentElement);
+    </script>
     <script type="module" src="/src/js/main.js"></script>
   </head>
   <body>
