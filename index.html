@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Atelier Audrey · Coiffure à Pontchâteau · Le mouvement vous révèle</title>
+    <meta name="description" content="Atelier Audrey, salon de coiffure au 31 Rue de la Cadivais à Pontchâteau : coupe, couleur, texture et coupes hommes. Prenez rendez-vous en ligne sur Planity ou appelez le 02 51 73 98 92." />
+    <!-- TODO(audrey): remove noindex once the salon approves the site and the final domain is set -->
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#272722" />
+    <link rel="canonical" href="{{site.url}}/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Atelier Audrey" />
+    <meta property="og:title" content="Atelier Audrey · Le mouvement vous révèle" />
+    <meta property="og:description" content="Salon de coiffure à Pontchâteau. Coupe, couleur, texture, hommes. Rendez-vous sur Planity." />
+    <meta property="og:url" content="{{site.url}}/" />
+    <meta property="og:image" content="{{site.url}}/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" as="image" type="image/avif" imagesrcset="/img/macro-828.avif 828w, /img/macro-1280.avif 1280w, /img/macro-1672.avif 1672w" imagesizes="100vw" />
+    <script type="application/ld+json">{{jsonld}}</script>
+    <script>document.documentElement.classList.add('js')</script>
+    <script type="module" src="/src/js/main.js"></script>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+      <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17h.01M12 17h.01" stroke-width="2.2" stroke-linecap="round"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 3.5h2.6l1.5 4.4-2.2 1.4a11.5 11.5 0 0 0 6.2 6.2l1.4-2.2 4.4 1.5v2.6a2 2 0 0 1-2.1 2A16.6 16.6 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1Z"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    </svg>
+
+    <a class="skip-link" href="#signature">Aller au contenu</a>
+
+    <header class="nav" data-nav>
+      <div class="nav__pill">
+        <!-- TODO(audrey): official logo files. The circular mark in the mockup is a concept, not the salon's logo: an HTML wordmark stands in. -->
+        <a class="nav__brand" href="#top" aria-label="Atelier Audrey, retour en haut de page">
+          <span class="nav__brand-small" aria-hidden="true">Atelier</span>
+          <span class="nav__brand-word" aria-hidden="true">audrey</span>
+        </a>
+        <nav class="nav__links" aria-label="Navigation principale">
+          <ul>
+            <li><a href="#expertises">Expertises</a></li>
+            <li><a href="#nuances">Nuances</a></li>
+            <li><a href="#atelier">L’atelier</a></li>
+            <li><a href="#rendez-vous">Contact</a></li>
+          </ul>
+        </nav>
+        <a class="btn btn--sage btn--sm nav__cta" href="{{site.reservation}}" target="_blank" rel="noopener">
+          <svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>
+          <span class="nav__cta-long">Prendre rendez-vous</span><span class="nav__cta-short">Réserver</span>
+          <span class="sr-only">(Planity, nouvel onglet)</span>
+        </a>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" data-menu-toggle>
+          <svg class="icon icon--open" aria-hidden="true"><use href="#i-menu"/></svg>
+          <svg class="icon icon--close" aria-hidden="true"><use href="#i-close"/></svg>
+          <span class="sr-only" data-menu-label>Ouvrir le menu</span>
+        </button>
+      </div>
+      <div class="menu" id="menu" hidden data-menu>
+        <ul>
+          <li><a href="#expertises">Expertises</a></li>
+          <li><a href="#nuances">Nuances</a></li>
+          <li><a href="#atelier">L’atelier</a></li>
+          <li><a href="#rendez-vous">Contact</a></li>
+        </ul>
+        <a class="menu__phone" href="{{site.phone.href}}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>{{site.phone.display}}</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- 01 · Accueil — static still = portrait + title; hero.js adds the scroll timeline -->
+      <section class="hero" id="top" aria-labelledby="hero-title" data-hero>
+        <div class="hero__stage" data-stage>
+          <div class="hero__layer hero__macro" data-layer="macro">
+            <x-pic name="macro" sizes="100vw" alt="" class="hero__img" loading="eager"></x-pic>
+          </div>
+          <div class="hero__layer hero__portrait" data-layer="portrait">
+            <x-pic name="portrait" mobile="portrait-mobile" sizes="100vw" alt="Portrait d’une femme aux cheveux bruns ondulés, éclairés de reflets caramel" class="hero__img" loading="eager" fetchpriority="high"></x-pic>
+          </div>
+          <div class="hero__scrim" data-layer="scrim" aria-hidden="true"></div>
+          <div class="hero__meche" data-layer="meche" aria-hidden="true">
+            <x-pic name="meche" sizes="(min-width: 1024px) 64vw, 120vw" alt="" class="hero__meche-img"></x-pic>
+          </div>
+
+          <div class="hero__panels" data-layer="panels" aria-hidden="true">
+            <p class="hero__panels-title" data-panels-title><span class="rule"></span>Nos expertises</p>
+            <figure class="hero__panel" data-panel>
+              <x-pic name="coupe" sizes="13vw" alt="" desktop-only></x-pic>
+              <figcaption>Coupe</figcaption>
+            </figure>
+            <figure class="hero__panel" data-panel>
+              <x-pic name="couleur" sizes="13vw" alt="" desktop-only></x-pic>
+              <figcaption>Couleur</figcaption>
+            </figure>
+            <figure class="hero__panel" data-panel>
+              <x-pic name="texture" sizes="13vw" alt="" desktop-only></x-pic>
+              <figcaption>Texture</figcaption>
+            </figure>
+          </div>
+
+          <div class="hero__copy" data-layer="copy">
+            <h1 class="hero__title" id="hero-title">
+              <span class="hero__eyebrow" data-copy="0">Atelier</span>
+              <span class="hero__word" data-copy="0">audrey</span>
+            </h1>
+            <p class="hero__tagline" data-copy="1">Le mouvement<br /> vous révèle.</p>
+            <p class="hero__tags" data-copy="2"><span class="rule" aria-hidden="true"></span>Coiffure · Couleur · Soin · Conseil</p>
+            <a class="btn btn--glass hero__cta" data-copy="2" href="{{site.reservation}}" target="_blank" rel="noopener">
+              <svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>
+              Prendre rendez-vous
+              <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+              <span class="sr-only">(Planity, nouvel onglet)</span>
+            </a>
+          </div>
+          <p class="hero__aside" data-layer="aside"><span class="hero__aside-line" aria-hidden="true"></span>Plus qu’une coiffure, une version de vous.</p>
+
+          <div class="hero__cue" data-layer="cue" aria-hidden="true">
+            <span>Salon de coiffure · Pontchâteau</span>
+            <span class="hero__cue-scroll">Faites défiler<i></i></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 · Signature -->
+      <section class="signature" id="signature" aria-labelledby="signature-title">
+        <div class="container signature__grid">
+          <div class="signature__text">
+            <h2 class="h2" id="signature-title" data-reveal>Votre chevelure,<br /> votre signature.</h2>
+            <span class="rule rule--gold" aria-hidden="true" data-reveal></span>
+            <p class="lead" data-reveal>Une coupe, une nuance, un mouvement&#8239;: chaque détail compose un style qui vous ressemble.</p>
+            <a class="btn btn--outline" href="#expertises" data-reveal>
+              Découvrir nos expertises
+              <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+          <div class="signature__visual" data-drift="meche">
+            <x-pic name="meche" sizes="(min-width: 1024px) 60vw, 100vw" alt="" class="signature__meche"></x-pic>
+          </div>
+          <ul class="vlist signature__list" aria-label="Notre approche">
+            <li>Écoute</li><li>Conseil</li><li>Naturel</li><li>Équilibre</li><li>Personnalisation</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 03 · Expertises -->
+      <section class="expertises" id="expertises" aria-labelledby="expertises-title">
+        <div class="container">
+          <header class="section-head">
+            <h2 class="eyebrow" id="expertises-title"><span class="rule" aria-hidden="true"></span>Expertises</h2>
+          </header>
+          <ul class="cards" role="list">
+            <li class="card" data-card>
+              <div class="card__media"><x-pic name="coupe" sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 90vw" alt="Mains de coiffeuse travaillant une mèche ondulée au peigne" class="card__img"></x-pic></div>
+              <h3 class="card__title">Coupe</h3>
+              <span class="rule rule--gold rule--sm" aria-hidden="true"></span>
+              <p>Des lignes et des volumes pensés pour accompagner votre mouvement.</p>
+            </li>
+            <li class="card" data-card>
+              <div class="card__media"><x-pic name="couleur" sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 90vw" alt="Longs cheveux ondulés vus de dos, du châtain aux pointes blondes" class="card__img"></x-pic></div>
+              <h3 class="card__title">Couleur</h3>
+              <span class="rule rule--gold rule--sm" aria-hidden="true"></span>
+              <p>Des nuances et des reflets pour donner une nouvelle lecture à votre chevelure.</p>
+            </li>
+            <li class="card" data-card>
+              <div class="card__media"><x-pic name="texture" sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 90vw" alt="Gros plan sur des boucles brunes aux reflets dorés" class="card__img"></x-pic></div>
+              <h3 class="card__title">Texture</h3>
+              <span class="rule rule--gold rule--sm" aria-hidden="true"></span>
+              <p>Mettre en valeur la matière, le mouvement et le naturel des cheveux.</p>
+            </li>
+            <li class="card" data-card>
+              <div class="card__media"><x-pic name="hommes" sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 90vw" alt="Homme à la coupe texturée et à la barbe courte" class="card__img"></x-pic></div>
+              <h3 class="card__title">Hommes</h3>
+              <span class="rule rule--gold rule--sm" aria-hidden="true"></span>
+              <p>Coupe, shampoing et entretien de la barbe. Consultez les prestations disponibles sur <a class="text-link" href="{{site.reservation}}" target="_blank" rel="noopener">Planity<span class="sr-only"> (nouvel onglet)</span></a>.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 04 · Nuances -->
+      <section class="nuances" id="nuances" aria-labelledby="nuances-title">
+        <p class="nuances__word" aria-hidden="true" data-drift="word">nuances</p>
+        <div class="container nuances__grid">
+          <ul class="vlist nuances__list" aria-label="Ce que nous cherchons">
+            <li>Subtilité</li><li>Éclat</li><li>Naturel</li><li>Caractère</li><li>Votre style</li>
+          </ul>
+          <figure class="nuances__fig nuances__fig--brun" data-reveal-media>
+            <div class="nuances__frame" data-drift="macro"><x-pic name="nuance-brun" sizes="(min-width: 1024px) 26vw, 60vw" alt="Cheveux bruns profonds aux reflets subtils" class="nuances__img"></x-pic></div>
+            <figcaption>Brun profond</figcaption>
+          </figure>
+          <figure class="nuances__fig nuances__fig--blond" data-reveal-media>
+            <div class="nuances__frame"><x-pic name="nuance-blond" sizes="(min-width: 1024px) 20vw, 50vw" alt="Pointes ondulées d’un blond lumineux" class="nuances__img"></x-pic></div>
+            <figcaption>Blond lumineux</figcaption>
+          </figure>
+          <div class="nuances__text">
+            <h2 class="h2" id="nuances-title" data-reveal>La lumière,<br /> à votre façon.</h2>
+            <span class="rule rule--gold" aria-hidden="true" data-reveal></span>
+            <p class="lead" data-reveal>Brun profond, blond lumineux, reflets subtils&#8239;: explorons la nuance qui vous correspond.</p>
+            <a class="btn btn--outline" href="{{site.reservation}}" target="_blank" rel="noopener" data-reveal>
+              Prendre rendez-vous
+              <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+              <span class="sr-only">(Planity, nouvel onglet)</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 · L'atelier -->
+      <section class="atelier" id="atelier" aria-labelledby="atelier-title">
+        <div class="container atelier__grid">
+          <!-- TODO(audrey): replace the conceptual photographs (here and in every section) with approved photos of the salon and its clients; add the salon interior as a third column (mockup) -->
+          <figure class="atelier__fig" data-fade>
+            <x-pic name="geste" sizes="(min-width: 1024px) 58vw, 100vw" alt="Une coiffeuse met en forme au peigne les cheveux ondulés d’une cliente, dans un salon lumineux" class="atelier__img"></x-pic>
+            <figcaption>Photographie d’illustration</figcaption>
+          </figure>
+          <div class="atelier__text">
+            <h2 class="h2" id="atelier-title" data-reveal>Un atelier,<br /> une attention.</h2>
+            <span class="rule rule--gold" aria-hidden="true" data-reveal></span>
+            <p class="lead" data-reveal>À Pontchâteau, un lieu pour prendre le temps de parler de vos cheveux et de vos envies.</p>
+            <a class="btn btn--outline" href="#rendez-vous" data-reveal>
+              Nous trouver
+              <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06 · Rendez-vous -->
+      <section class="rdv" id="rendez-vous" aria-labelledby="rdv-title">
+        <div class="container rdv__grid">
+          <div class="rdv__main">
+            <p class="eyebrow eyebrow--light"><span class="rule" aria-hidden="true"></span>Rendez-vous</p>
+            <h2 class="h2 rdv__title" id="rdv-title">Votre prochain mouvement<br /> commence ici.</h2>
+            <div class="rdv__lead">
+              <svg class="rdv__line" viewBox="0 0 600 80" preserveAspectRatio="none" aria-hidden="true" data-line>
+                <path d="M0 58 C 70 18, 150 14, 220 44 S 360 78, 440 46 S 560 34, 600 40" pathLength="1" vector-effect="non-scaling-stroke" />
+              </svg>
+              <a class="btn btn--ivory" href="{{site.reservation}}" target="_blank" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>
+                Prendre rendez-vous
+                <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+                <span class="sr-only">(Planity, nouvel onglet)</span>
+              </a>
+            </div>
+            <a class="btn btn--outline-light" href="{{site.phone.href}}">
+              <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+              Appeler le salon
+            </a>
+            <p class="rdv__note">Défrisage ou décoloration&#8239;? Appelez directement le salon pour en parler avant de réserver.</p>
+          </div>
+          <!-- TODO(audrey): Google Maps place link (cid / place_id of the salon, never an address search) and, if the salon wants them, confirmed opening hours -->
+          <address class="rdv__info">
+            <p class="rdv__item">
+              <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+              <span>{{site.address.street}}<br />{{site.address.postalCode}} {{site.address.city}}</span>
+            </p>
+            <p class="rdv__item">
+              <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+              <a href="{{site.phone.href}}">{{site.phone.display}}</a>
+            </p>
+            <p class="rdv__item">
+              <svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>
+              <span>Réservation en ligne sur <a href="{{site.reservation}}" target="_blank" rel="noopener">Planity<span class="sr-only"> (nouvel onglet)</span></a></span>
+            </p>
+          </address>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <p class="footer__brand"><span class="footer__brand-small">Atelier</span><span class="footer__brand-word">audrey</span></p>
+        <p class="footer__tag">Le mouvement vous révèle.</p>
+        <nav class="footer__nav" aria-label="Pied de page">
+          <a href="#expertises">Expertises</a>
+          <a href="#nuances">Nuances</a>
+          <a href="#atelier">L’atelier</a>
+          <a href="#rendez-vous">Contact</a>
+        </nav>
+        <p class="footer__contact">{{site.address.street}}, {{site.address.postalCode}} {{site.address.city}} · <a href="{{site.phone.href}}">{{site.phone.display}}</a></p>
+        <p class="footer__legal">Photographies d’illustration&#8239;: les personnes représentées ne sont pas des clientes du salon. © {{site.year}} Atelier Audrey.</p>
+      </div>
+    </footer>
+  </body>
+</html>

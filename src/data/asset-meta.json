@@ -1,0 +1,375 @@
+{
+  "macro": {
+    "width": 1672,
+    "height": 940,
+    "ratio": 1.7787,
+    "files": {
+      "avif": [
+        {
+          "w": 828,
+          "file": "macro-828.avif",
+          "kb": 42
+        },
+        {
+          "w": 1280,
+          "file": "macro-1280.avif",
+          "kb": 76
+        },
+        {
+          "w": 1672,
+          "file": "macro-1672.avif",
+          "kb": 103
+        }
+      ],
+      "webp": [
+        {
+          "w": 828,
+          "file": "macro-828.webp",
+          "kb": 57
+        },
+        {
+          "w": 1280,
+          "file": "macro-1280.webp",
+          "kb": 106
+        },
+        {
+          "w": 1672,
+          "file": "macro-1672.webp",
+          "kb": 151
+        }
+      ]
+    },
+    "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAwCdASoYAA0APu1kq04ppaQiMAgBMB2JQBOmUABlM+mG1p8ETwAA/uWZEH50YIDVIY9j237LbnhQFGIc+ZoeGUexcP2RXszqrVp/tUyElQJxnj9ooAAA"
+  },
+  "portrait": {
+    "width": 1672,
+    "height": 941,
+    "ratio": 1.7768,
+    "files": {
+      "avif": [
+        {
+          "w": 960,
+          "file": "portrait-960.avif",
+          "kb": 25
+        },
+        {
+          "w": 1280,
+          "file": "portrait-1280.avif",
+          "kb": 40
+        },
+        {
+          "w": 1672,
+          "file": "portrait-1672.avif",
+          "kb": 59
+        }
+      ],
+      "webp": [
+        {
+          "w": 960,
+          "file": "portrait-960.webp",
+          "kb": 34
+        },
+        {
+          "w": 1280,
+          "file": "portrait-1280.webp",
+          "kb": 54
+        },
+        {
+          "w": 1672,
+          "file": "portrait-1672.webp",
+          "kb": 83
+        }
+      ]
+    },
+    "lqip": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwAwCdASoYAA4APu1iqk2ppaQiMAgBMB2JYwCdMoACStdgo+BGAAD3B/sjWcsjxDCVVNqyRMboX+0q7vhNjWjh3/G2m7m0IWTPxuWQZM099AAA"
+  },
+  "portrait-mobile": {
+    "width": 640,
+    "height": 941,
+    "ratio": 0.6801,
+    "files": {
+      "avif": [
+        {
+          "w": 640,
+          "file": "portrait-mobile-640.avif",
+          "kb": 31
+        }
+      ],
+      "webp": [
+        {
+          "w": 640,
+          "file": "portrait-mobile-640.webp",
+          "kb": 43
+        }
+      ]
+    }
+  },
+  "meche": {
+    "width": 1536,
+    "height": 1024,
+    "ratio": 1.5,
+    "files": {
+      "avif": [
+        {
+          "w": 800,
+          "file": "meche-800.avif",
+          "kb": 31
+        },
+        {
+          "w": 1200,
+          "file": "meche-1200.avif",
+          "kb": 67
+        },
+        {
+          "w": 1536,
+          "file": "meche-1536.avif",
+          "kb": 78
+        }
+      ],
+      "webp": [
+        {
+          "w": 800,
+          "file": "meche-800.webp",
+          "kb": 62
+        },
+        {
+          "w": 1200,
+          "file": "meche-1200.webp",
+          "kb": 136
+        },
+        {
+          "w": 1536,
+          "file": "meche-1536.webp",
+          "kb": 205
+        }
+      ]
+    }
+  },
+  "coupe": {
+    "width": 600,
+    "height": 750,
+    "ratio": 0.8,
+    "files": {
+      "avif": [
+        {
+          "w": 480,
+          "file": "coupe-480.avif",
+          "kb": 20
+        },
+        {
+          "w": 600,
+          "file": "coupe-600.avif",
+          "kb": 28
+        }
+      ],
+      "webp": [
+        {
+          "w": 480,
+          "file": "coupe-480.webp",
+          "kb": 28
+        },
+        {
+          "w": 600,
+          "file": "coupe-600.webp",
+          "kb": 41
+        }
+      ]
+    }
+  },
+  "couleur": {
+    "width": 1086,
+    "height": 1358,
+    "ratio": 0.7997,
+    "files": {
+      "avif": [
+        {
+          "w": 480,
+          "file": "couleur-480.avif",
+          "kb": 22
+        },
+        {
+          "w": 800,
+          "file": "couleur-800.avif",
+          "kb": 62
+        }
+      ],
+      "webp": [
+        {
+          "w": 480,
+          "file": "couleur-480.webp",
+          "kb": 30
+        },
+        {
+          "w": 800,
+          "file": "couleur-800.webp",
+          "kb": 82
+        }
+      ]
+    }
+  },
+  "texture": {
+    "width": 752,
+    "height": 940,
+    "ratio": 0.8,
+    "files": {
+      "avif": [
+        {
+          "w": 480,
+          "file": "texture-480.avif",
+          "kb": 29
+        },
+        {
+          "w": 752,
+          "file": "texture-752.avif",
+          "kb": 50
+        }
+      ],
+      "webp": [
+        {
+          "w": 480,
+          "file": "texture-480.webp",
+          "kb": 39
+        },
+        {
+          "w": 752,
+          "file": "texture-752.webp",
+          "kb": 72
+        }
+      ]
+    }
+  },
+  "hommes": {
+    "width": 800,
+    "height": 1000,
+    "ratio": 0.8,
+    "files": {
+      "avif": [
+        {
+          "w": 480,
+          "file": "hommes-480.avif",
+          "kb": 22
+        },
+        {
+          "w": 800,
+          "file": "hommes-800.avif",
+          "kb": 47
+        }
+      ],
+      "webp": [
+        {
+          "w": 480,
+          "file": "hommes-480.webp",
+          "kb": 29
+        },
+        {
+          "w": 800,
+          "file": "hommes-800.webp",
+          "kb": 65
+        }
+      ]
+    }
+  },
+  "nuance-brun": {
+    "width": 940,
+    "height": 940,
+    "ratio": 1,
+    "files": {
+      "avif": [
+        {
+          "w": 560,
+          "file": "nuance-brun-560.avif",
+          "kb": 31
+        },
+        {
+          "w": 940,
+          "file": "nuance-brun-940.avif",
+          "kb": 58
+        }
+      ],
+      "webp": [
+        {
+          "w": 560,
+          "file": "nuance-brun-560.webp",
+          "kb": 42
+        },
+        {
+          "w": 940,
+          "file": "nuance-brun-940.webp",
+          "kb": 84
+        }
+      ]
+    }
+  },
+  "nuance-blond": {
+    "width": 720,
+    "height": 900,
+    "ratio": 0.8,
+    "files": {
+      "avif": [
+        {
+          "w": 480,
+          "file": "nuance-blond-480.avif",
+          "kb": 31
+        },
+        {
+          "w": 720,
+          "file": "nuance-blond-720.avif",
+          "kb": 60
+        }
+      ],
+      "webp": [
+        {
+          "w": 480,
+          "file": "nuance-blond-480.webp",
+          "kb": 42
+        },
+        {
+          "w": 720,
+          "file": "nuance-blond-720.webp",
+          "kb": 81
+        }
+      ]
+    }
+  },
+  "geste": {
+    "width": 1536,
+    "height": 1024,
+    "ratio": 1.5,
+    "files": {
+      "avif": [
+        {
+          "w": 800,
+          "file": "geste-800.avif",
+          "kb": 27
+        },
+        {
+          "w": 1200,
+          "file": "geste-1200.avif",
+          "kb": 48
+        },
+        {
+          "w": 1536,
+          "file": "geste-1536.avif",
+          "kb": 67
+        }
+      ],
+      "webp": [
+        {
+          "w": 800,
+          "file": "geste-800.webp",
+          "kb": 37
+        },
+        {
+          "w": 1200,
+          "file": "geste-1200.webp",
+          "kb": 69
+        },
+        {
+          "w": 1536,
+          "file": "geste-1536.webp",
+          "kb": 98
+        }
+      ]
+    }
+  }
+}
